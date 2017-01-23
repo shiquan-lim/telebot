@@ -5,7 +5,7 @@ import random
 import urllib
 import urllib2
 import os
-import psycopg2
+# import psycopg2
 
 from urllib.parse import urlparse
 from time import gmtime, strftime
@@ -21,6 +21,7 @@ from google.appengine.ext import ndb
 import webapp2
 
 TOKEN = '134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs'
+# TOKEN = '279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE'
 
 BASE_URL = 'https://api.telegram.org/bot' + TOKEN + '/'
 
@@ -155,7 +156,7 @@ class WebhookHandler(webapp2.RequestHandler):
                 img.save(output, 'JPEG')
                 reply(img=output.getvalue())
             elif text == '/version':
-                reply('Version 2.0: Last updated 22.01.17')
+                reply('Version 2.0: Last updated 23.01.17')
             elif '/generatelist' in text:
                 reply('Please set the event name:'
                     +'\nType /rsvp to respond to this event.'

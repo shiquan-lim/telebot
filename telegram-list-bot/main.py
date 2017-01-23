@@ -8,7 +8,7 @@ import os
 import psycopg2
 
 from urllib.parse import urlparse
-
+from time import gmtime, strftime
 from datetime import datetime
 
 # for sending images
@@ -50,6 +50,17 @@ def listToString(invitees):
         listString=listString+"\n"+invitee+" has been invited"
     return listString
 
+def connectToDB():
+    url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
+    # Given limited plan, only connect if there is a necessary command
+    conn = psycopg2.connect(database=url.path[1:],
+      user=url.username,
+      password=url.password,
+      host=url.hostname,
+      port=url.port
+    )
+    cur = conn.cursor()
+
 # ================================
 
 #Variables for list functionality
@@ -81,16 +92,6 @@ class SetWebhookHandler(webapp2.RequestHandler):
 
 class WebhookHandler(webapp2.RequestHandler):
     def post(self):
-        url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
-        # Given limited plan, only connect if there is a necessary command
-        conn = psycopg2.connect(database=url.path[1:],
-          user=url.username,
-          password=url.password,
-          host=url.hostname,
-          port=url.port
-        )
-        cur = conn.cursor()
-
         urlfetch.set_default_fetch_deadline(30)
         body = json.loads(self.request.body)
         logging.info('request body:')

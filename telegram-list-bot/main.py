@@ -150,6 +150,8 @@ class WebhookHandler(webapp2.RequestHandler):
                 output = StringIO.StringIO()
                 img.save(output, 'JPEG')
                 reply(img=output.getvalue())
+            elif text == '/version':
+                reply('Version 2.0: Last updated 22.01.17')
             elif '/generatelist' in text:
                 reply('Please set the event name:'
                     +'\nType /rsvp to respond to this event.'

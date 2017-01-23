@@ -4,6 +4,10 @@ import logging
 import random
 import urllib
 import urllib2
+import os
+import psycopg2
+
+from urllib.parse import urlparse
 
 from datetime import datetime
 
@@ -19,7 +23,6 @@ import webapp2
 TOKEN = '134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs'
 
 BASE_URL = 'https://api.telegram.org/bot' + TOKEN + '/'
-
 
 # ================================
 
@@ -78,6 +81,15 @@ class SetWebhookHandler(webapp2.RequestHandler):
 
 class WebhookHandler(webapp2.RequestHandler):
     def post(self):
+        url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
+        conn = psycopg2.connect(database=url.path[1:],
+          user=url.username,
+          password=url.password,
+          host=url.hostname,
+          port=url.port
+        )
+        cur = conn.cursor()
+
         urlfetch.set_default_fetch_deadline(30)
         body = json.loads(self.request.body)
         logging.info('request body:')
@@ -184,6 +196,9 @@ class WebhookHandler(webapp2.RequestHandler):
                     reply(back)
             else:
                 logging.info('not enabled for chat_id {}'.format(chat_id))
+        finally:
+            cur.close()
+            conn.close()
 
 
 app = webapp2.WSGIApplication([

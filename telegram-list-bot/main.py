@@ -82,6 +82,7 @@ class SetWebhookHandler(webapp2.RequestHandler):
 class WebhookHandler(webapp2.RequestHandler):
     def post(self):
         url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
+        # Given limited plan, only connect if there is a necessary command
         conn = psycopg2.connect(database=url.path[1:],
           user=url.username,
           password=url.password,

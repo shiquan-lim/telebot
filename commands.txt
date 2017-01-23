@@ -1,0 +1,11 @@
+Registering events:
+create table events (eventKey varchar PRIMARY KEY, eventName varchar not null, createdOn timestamp not null, createdBy varchar not null, chatid varchar not null);
+
+Check hook activity:
+https://telegram-list-bot.appspot.com/set_webhook?url=https://telegram-list-bot.appspot.com/webhook
+
+Check bot status:
+for @SQListBot
+https://api.telegram.org/bot134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs/getMe
+for @the_quantum_bot
+https://api.telegram.org/bot279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE/getMe

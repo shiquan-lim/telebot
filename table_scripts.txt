@@ -1,3 +1,0 @@
-Registering events:
-
-create table events (eventKey varchar PRIMARY KEY, eventName varchar not null, createdOn timestamp not null, createdBy varchar not null, chatid varchar not null);

@@ -7,7 +7,7 @@ import urllib2
 import os
 # import psycopg2
 
-from urllib.parse import urlparse
+# from urllib.parse import urlparse
 from time import gmtime, strftime
 from datetime import datetime
 
@@ -20,8 +20,8 @@ from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 import webapp2
 
-TOKEN = '134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs'
-# TOKEN = '279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE'
+# TOKEN = '134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs'
+TOKEN = '279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE'
 
 BASE_URL = 'https://api.telegram.org/bot' + TOKEN + '/'
 
@@ -52,13 +52,14 @@ def listToString(invitees):
     return listString
 
 def connectToDB():
-    url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
+    # url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
     # Given limited plan, only connect if there is a necessary command
-    conn = psycopg2.connect(database=url.path[1:],
-      user=url.username,
-      password=url.password,
-      host=url.hostname,
-      port=url.port
+    conn = psycopg2.connect(
+      database="jdtqfhfb",
+      user="jdtqfhfb",
+      password="f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM",
+      host="elmer.db.elephantsql.com",
+      port="5432"
     )
     cur = conn.cursor()
 

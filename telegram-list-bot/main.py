@@ -61,6 +61,10 @@ def connectToDB():
     )
     cur = conn.cursor()
 
+def closeConnection():
+    cur.close()
+    conn.close()
+
 # ================================
 
 #Variables for list functionality
@@ -200,9 +204,6 @@ class WebhookHandler(webapp2.RequestHandler):
                     reply(back)
             else:
                 logging.info('not enabled for chat_id {}'.format(chat_id))
-        finally:
-            cur.close()
-            conn.close()
 
 
 app = webapp2.WSGIApplication([

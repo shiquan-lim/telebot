@@ -5,11 +5,14 @@ import random
 import urllib
 import urllib2
 import os
+# import sys
+# print(sys.version_info)
 # import psycopg2
 
 # from urllib.parse import urlparse
 from time import gmtime, strftime
 from datetime import datetime
+from firebase import firebase
 
 # for sending images
 from PIL import Image
@@ -54,18 +57,21 @@ def listToString(invitees):
 def connectToDB():
     # url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
     # Given limited plan, only connect if there is a necessary command
-    conn = psycopg2.connect(
-      database="jdtqfhfb",
-      user="jdtqfhfb",
-      password="f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM",
-      host="elmer.db.elephantsql.com",
-      port="5432"
-    )
-    cur = conn.cursor()
 
-def closeConnection():
-    cur.close()
-    conn.close()
+    # conn = psycopg2.connect(
+    #   database="jdtqfhfb",
+    #   user="jdtqfhfb",
+    #   password="f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM",
+    #   host="elmer.db.elephantsql.com",
+    #   port="5432"
+    # )
+    # cur = conn.cursor()
+
+    firebase = firebase.FirebaseApplication('https://telegram-list-bot.firebaseio.com', None)
+
+# def closeConnection():
+    # cur.close()
+    # conn.close()
 
 # ================================
 

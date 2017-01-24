@@ -2,7 +2,12 @@ application: telegram-list-bot
 version: 1
 runtime: python27
 api_version: 1
+# vm: true
+# entrypoint: gunicorn -b :$PORT main:app
 threadsafe: yes
+
+# runtime_config:
+#     python_version: 3
 
 handlers:
 - url: /favicon\.ico
@@ -21,5 +26,3 @@ libraries:
   version: "2.5.2"
 - name: PIL
   version: latest
-# - name: psycopg2
-#   version: latest

@@ -53,12 +53,8 @@ def listToString(invitees):
         listString=listString+"\n"+invitee+" has been invited"
     return listString
 
-def setFire():
-    firebase = firebase.FirebaseApplication('https://telegram-list-bot.firebaseio.com', None)
-    return firebase
-
 def createEvent():
-    db = setFire()
+    db = firebase.FirebaseApplication('https://telegram-list-bot.firebaseio.com', None)
     db.put('/events', 'TESTEVENT', {'key1': 'value1'}, {'key2': 'value2'})
 
 # ================================
@@ -152,9 +148,11 @@ class WebhookHandler(webapp2.RequestHandler):
             #     reply(img=output.getvalue())
             elif text == '/version':
                 reply('Version 3.0: Last updated 25.01.17')
-            elif text == '/createEvent':
+            elif text == '/createevent':
                 createEvent()
                 reply('Event Created!')
+            elif text == 'shiquan':
+                reply('DAS ME!')
             elif '/generatelist' in text:
                 reply('Please set the event name:'
                     +'\nType /rsvp to respond to this event.'
@@ -183,7 +181,7 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply('What command?')
 
         elif 'who are you' in text:
-            reply('I am the list bot, created by Master Shi Quan.')
+            reply('I am QUANTUM, created by Master Shi Quan.')
         elif 'what time' in text:
             now = datetime.now()
             reply("It is "+str((now.hour+8)%24)+":"+str(now.minute))

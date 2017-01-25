@@ -23,7 +23,9 @@ from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 import webapp2
 
+# SQListBot Token
 # TOKEN = '134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs'
+# Quantum Token
 TOKEN = '279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE'
 
 BASE_URL = 'https://api.telegram.org/bot' + TOKEN + '/'

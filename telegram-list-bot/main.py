@@ -53,22 +53,13 @@ def listToString(invitees):
         listString=listString+"\n"+invitee+" has been invited"
     return listString
 
-def connectToDB():
-    url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
-    # Given limited plan, only connect if there is a necessary command
+def setFire():
+    firebase = firebase.FirebaseApplication('https://telegram-list-bot.firebaseio.com', None)
+    return firebase
 
-    conn = psycopg2.connect(
-      database="jdtqfhfb",
-      user="jdtqfhfb",
-      password="f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM",
-      host="elmer.db.elephantsql.com",
-      port="5432"
-    )
-    cur = conn.cursor()
-
-def closeConnection():
-    cur.close()
-    conn.close()
+def createEvent():
+    db = setFire()
+    db.put('/events', 'TESTEVENT', {'key1': 'value1'}, {'key2': 'value2'})
 
 # ================================
 
@@ -161,6 +152,9 @@ class WebhookHandler(webapp2.RequestHandler):
             #     reply(img=output.getvalue())
             elif text == '/version':
                 reply('Version 3.0: Last updated 25.01.17')
+            elif text == '/createEvent':
+                createEvent()
+                reply('Event Created!')
             elif '/generatelist' in text:
                 reply('Please set the event name:'
                     +'\nType /rsvp to respond to this event.'

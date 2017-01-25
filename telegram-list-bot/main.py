@@ -58,7 +58,7 @@ def listToString(invitees):
 
 def connectToDB():
     url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
-    Given limited plan, only connect if there is a necessary command
+    # Given limited plan, only connect if there is a necessary command
 
     conn = psycopg2.connect(
       database="jdtqfhfb",

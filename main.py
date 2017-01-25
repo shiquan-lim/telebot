@@ -15,7 +15,7 @@ from datetime import datetime
 from firebase import firebase
 
 # for sending images
-from PIL import Image
+# from PIL import Image
 import multipart
 
 # standard app engine imports
@@ -156,14 +156,14 @@ class WebhookHandler(webapp2.RequestHandler):
             elif text == '/stop':
                 reply('Bot disabled')
                 setEnabled(chat_id, False)
-            elif text == '/image':
-                img = Image.new('RGB', (512, 512))
-                base = random.randint(0, 16777216)
-                pixels = [base+i*j for i in range(512) for j in range(512)]
-                img.putdata(pixels)
-                output = StringIO.StringIO()
-                img.save(output, 'JPEG')
-                reply(img=output.getvalue())
+            # elif text == '/image':
+            #     img = Image.new('RGB', (512, 512))
+            #     base = random.randint(0, 16777216)
+            #     pixels = [base+i*j for i in range(512) for j in range(512)]
+            #     img.putdata(pixels)
+            #     output = StringIO.StringIO()
+            #     img.save(output, 'JPEG')
+            #     reply(img=output.getvalue())
             elif text == '/version':
                 reply('Version 2.0: Last updated 23.01.17')
             elif '/generatelist' in text:

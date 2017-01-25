@@ -200,18 +200,19 @@ class WebhookHandler(webapp2.RequestHandler):
             reply("It is "+str((now.hour+8)%24)+":"+str(now.minute))
         else:
             if getEnabled(chat_id):
-                try:
-                    resp1 = json.load(urllib2.urlopen('http://www.simsimi.com/requestChat?lc=en&ft=1.0&req=' + urllib.quote_plus(text.encode('utf-8'))))
-                    back = resp1.get('res').get('msg')
-                except urllib2.HTTPError, err:
-                    logging.error(err)
-                    back = str(err)
-                if not back:
-                    reply('okay...')
-                elif 'I HAVE NO RESPONSE' in back:
-                    reply('you said something with no meaning')
-                else:
-                    reply(back)
+                # try:
+                #     resp1 = json.load(urllib2.urlopen('http://www.simsimi.com/requestChat?lc=en&ft=1.0&req=' + urllib.quote_plus(text.encode('utf-8'))))
+                #     back = resp1.get('res').get('msg')
+                # # except urllib2.HTTPError, err:
+                # #     logging.error(err)
+                # #     back = str(err)
+                # if not back:
+                #     reply('okay...')
+                # elif 'I HAVE NO RESPONSE' in back:
+                #     reply('you said something with no meaning')
+                # else:
+                #     reply(back)
+                reply("No Meaning")
             else:
                 logging.info('not enabled for chat_id {}'.format(chat_id))
 

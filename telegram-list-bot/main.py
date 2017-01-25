@@ -5,18 +5,15 @@ import random
 import urllib
 import urllib2
 import os
-# import sys
-# print(sys.version_info)
-# import psycopg2
 
 # from urllib.parse import urlparse
 from time import gmtime, strftime
 from datetime import datetime
-from firebase import firebase
+# from firebase import firebase
 
 # for sending images
 # from PIL import Image
-import multipart
+# import multipart
 
 # standard app engine imports
 from google.appengine.api import urlfetch
@@ -163,7 +160,7 @@ class WebhookHandler(webapp2.RequestHandler):
             #     img.save(output, 'JPEG')
             #     reply(img=output.getvalue())
             elif text == '/version':
-                reply('Version 2.0: Last updated 23.01.17')
+                reply('Version 3.0: Last updated 25.01.17')
             elif '/generatelist' in text:
                 reply('Please set the event name:'
                     +'\nType /rsvp to respond to this event.'
@@ -198,19 +195,19 @@ class WebhookHandler(webapp2.RequestHandler):
             reply("It is "+str((now.hour+8)%24)+":"+str(now.minute))
         else:
             if getEnabled(chat_id):
-                # try:
-                #     resp1 = json.load(urllib2.urlopen('http://www.simsimi.com/requestChat?lc=en&ft=1.0&req=' + urllib.quote_plus(text.encode('utf-8'))))
-                #     back = resp1.get('res').get('msg')
-                # # except urllib2.HTTPError, err:
-                # #     logging.error(err)
-                # #     back = str(err)
-                # if not back:
-                #     reply('okay...')
-                # elif 'I HAVE NO RESPONSE' in back:
-                #     reply('you said something with no meaning')
-                # else:
-                #     reply(back)
-                reply("No Meaning")
+                try:
+                    resp1 = json.load(urllib2.urlopen('http://www.simsimi.com/requestChat?lc=en&ft=1.0&req=' + urllib.quote_plus(text.encode('utf-8'))))
+                    back = resp1.get('res').get('msg')
+                except urllib2.HTTPError, err:
+                    logging.error(err)
+                    back = str(err)
+                if not back:
+                    reply('okay...')
+                elif 'I HAVE NO RESPONSE' in back:
+                    reply('you said something with no meaning')
+                else:
+                    reply(back)
+                # reply("No Meaning")
             else:
                 logging.info('not enabled for chat_id {}'.format(chat_id))
 

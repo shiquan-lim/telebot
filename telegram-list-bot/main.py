@@ -7,7 +7,7 @@ import urllib2
 import os
 # import sys
 # print(sys.version_info)
-import psycopg2
+# import psycopg2
 
 # from urllib.parse import urlparse
 from time import gmtime, strftime

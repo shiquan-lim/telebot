@@ -57,23 +57,21 @@ def listToString(invitees):
     return listString
 
 def connectToDB():
-    # url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
-    # Given limited plan, only connect if there is a necessary command
+    url = urlparse("postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb")
+    Given limited plan, only connect if there is a necessary command
 
-    # conn = psycopg2.connect(
-    #   database="jdtqfhfb",
-    #   user="jdtqfhfb",
-    #   password="f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM",
-    #   host="elmer.db.elephantsql.com",
-    #   port="5432"
-    # )
-    # cur = conn.cursor()
+    conn = psycopg2.connect(
+      database="jdtqfhfb",
+      user="jdtqfhfb",
+      password="f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM",
+      host="elmer.db.elephantsql.com",
+      port="5432"
+    )
+    cur = conn.cursor()
 
-    firebase = firebase.FirebaseApplication('https://telegram-list-bot.firebaseio.com', None)
-
-# def closeConnection():
-    # cur.close()
-    # conn.close()
+def closeConnection():
+    cur.close()
+    conn.close()
 
 # ================================
 

@@ -9,6 +9,3 @@ for @SQListBot
 https://api.telegram.org/bot134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs/getMe
 for @the_quantum_bot
 https://api.telegram.org/bot279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE/getMe
-
-# - name: psycopg2
-#   version: latest

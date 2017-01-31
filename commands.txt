@@ -9,3 +9,6 @@ for @SQListBot
 https://api.telegram.org/bot134200866:AAGSqcPJVNtMruJBGpFX-1PEGBwA6KYxfKs/getMe
 for @the_quantum_bot
 https://api.telegram.org/bot279379002:AAGRWKf3V3mUtTt9Lg-t9OSSu7kp2mGdESE/getMe
+
+Connect to Postgres via Elephant:
+psql postgres://jdtqfhfb:f_Chj6qnDk990Nl4zf6Gy0OTWLGAs2CM@elmer.db.elephantsql.com:5432/jdtqfhfb limshiq

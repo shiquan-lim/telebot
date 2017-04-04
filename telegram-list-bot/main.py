@@ -181,7 +181,7 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply('What command?')
 
         elif 'who are you' in text:
-            reply('I am QUANTUM, created by Master Shi Quan.')
+            reply('I am QUANTUM, created by Master LIM Shi Quan.')
         elif 'what time' in text:
             now = datetime.now()
             reply("It is "+str((now.hour+8)%24)+":"+str(now.minute))
